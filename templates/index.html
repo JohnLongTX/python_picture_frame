@@ -1,0 +1,55 @@
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="/static/css">
+<title>PhotoSlider</title>
+</head>
+<body>
+
+<img id='img-pic' src="">
+<div class="info">
+        <h1 id="cur-time"></h1>
+</div>
+<div class="curtemp">
+        <h1 id="cur-temp"></h1>
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+        var imgFileName = "";
+        var getImages = setInterval(function(){         
+                $.getJSON('templates/', function(data) {
+                        window.imgFileName = data;
+                })
+                image = document.getElementById('img-pic');
+                image.src='templates/' + window.imgFileName;
+                
+        }, 5000);
+        
+        var getWeather = setInterval(function(){
+                $.getJSON('get_weather', function(data) {
+                        kelTemp = data.main.temp;
+                        fTemp = 9/5 * (parseInt(kelTemp) - 273) + 32;
+                        document.getElementById('cur-temp').innerHTML = fTemp.toString() + "&#8457;";
+                })
+        }, 100000);
+        
+        var getTime = setInterval(function(){
+                var current = new Date();
+                function pad(value){
+                        if(value < 10) {
+                                return '0' + value;
+                        } else {
+                                return value;
+                        }
+
+                }
+                time = pad(current.getHours()) + ":" + pad(current.getMinutes()) + ":" + pad(current.getSeconds());
+                document.getElementById('cur-time').innerHTML = time;
+                
+        }, 1000)        
+
+</script>
+<div class="logo">
+        <img id="logo" src="get_logo">
+</div>
+</body>
+</html>

@@ -1,0 +1,55 @@
+body{
+    overflow: hidden;
+    animation: colorChange 50s;
+    -webkit-animation: colorChange 50s;
+    animation-iteration-count: infinite;
+}
+@keyframes colorChange{
+    0%   {background: black;}
+    25%  {background: #333;}
+    50%  {background: blue;}
+    75%  {background: #1b2b84;}
+    100% {background: black;}
+}
+#img-pic{
+    border-radius: 10px;
+    height: 1000px;
+}
+#cur-temp{
+    color: white;
+    font-size: 2em;
+}
+#cur-time{
+    color: white;
+    font-size: 9em;
+    margin: 0;
+}
+.info{
+    position: fixed;
+    bottom: 180px;
+    right: 18px;
+    padding-top: 0;
+    padding-bottom: 0;
+    background: rgba(32,32,32,0.4);
+    border-radius: 10px;
+    padding-left: 1.2em;
+    padding-right: 1.2em;
+    padding-top: 2px;
+}
+#logo{
+    position: fixed;
+    top: 10px;
+    right: 20px;
+    width: 30%;
+    border-radius: 10px;
+    z-index: -1;
+}
+
+.curtemp{
+    position: fixed;
+    bottom: 50px;
+    right: 18px;
+    padding: 10px;
+    border-radius: 50%;
+    background: rgba(32,32,32,0.4)
+}
